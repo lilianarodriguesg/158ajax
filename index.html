@@ -4,8 +4,15 @@
 
 	<body id="">
 	<button name ="aaaa" value="clica aqui" id="aaaa"></button>
+
+	<button name ="bbbb" value="clica aqui" id="bbbb">JSON</button>
+	<button name ="btpessoa"  id="btpessoa">pessoa</button>
+
 	<div class="result">
 	</div>	
+
+		<div class="resultJSON">
+	</div>
 </body>
 <script>
 
@@ -18,6 +25,27 @@ $("#aaaa").click(function(){
 		$(".result" ).html(data);
 	});
 });
+$( "#bbbb" ).click(function() {
+	$.getJSON("http://www.franciscoribeiro.net/loc.json",function(data){
+
+		$.each( data,function(key,val){
+			$(".resultJSON" ).append('<h1>'+ key +'::'
+ + val +'</h1>');
+});
+});
+	});
+
+$( "#btpessoa" ).click(function() {
+	servidor ="http://www.franciscoribeiro.net/"
+
+	$.getJSON (servidor + "pessoa1.json",function (data) {
+		$("body").append('<div>nome' +data['nome'] + '</div>');
+		$("body").append('<div>nac' + data['nacionalidade'] + '</div>');
+
+	});
+});
+
+
 
 	</script>
 
